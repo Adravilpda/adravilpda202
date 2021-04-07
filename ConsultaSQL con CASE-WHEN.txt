@@ -1,0 +1,16 @@
+select * , 
+case departamento 	when '01' then 'CH' 
+			when '02' then 'LP'
+			when '03' then 'CB'
+			when '04' then 'OR'
+			when '05' then 'PT'
+			when '06' then 'TJ'
+			when '07' then 'SC'
+			when '08' then 'BE'
+			when '09' then 'PD'
+			else 'otro' end 
+from (select x1.departamento,x1.sigla, AVG(notafinal) 
+from
+(select departamento,sigla,notafinal from persona x1 join nota x2 on x1.ci=x2.ci) x1
+group by x1.departamento,x1.sigla
+order by x1.sigla) x1

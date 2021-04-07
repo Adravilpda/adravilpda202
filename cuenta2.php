@@ -16,6 +16,13 @@ $fila2 = mysqli_fetch_array($cuenta);
 <?php
 }
 else{
+	if ($fila2['rol']=='docente'){
+	echo "La cuenta es administrativa";
+?>	
+	<a href="promedios.php">Ver Promedios por Departamento</a>
+<?php
+	}
+	else{
 ?>
 <center><h1>Elige tu color preferido para tu tema de pantalla</H1>
 <form>
@@ -66,7 +73,7 @@ echo "</tr>";
 <?php
 
 while ($filan = mysqli_fetch_array($cuenta2))
-	{
+		{
 echo "<tr>";
 echo "<td>$filan[sigla]</td>";
 echo "<td>$filan[nota1]</td>";
@@ -74,10 +81,9 @@ echo "<td>$filan[nota2]</td>";
 echo "<td>$filan[nota3]</td>";
 echo "<td>$filan[notafinal]</td>";
 echo "</tr>";
+		}
 	}
 }
 ?>
 </table>
  
-
-
